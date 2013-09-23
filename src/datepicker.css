@@ -1,0 +1,203 @@
+/* Datepicker */
+.minicalendar {
+    background-color: rgb(0, 175, 240);
+    border: 6px solid rgb(0, 175, 240);
+    font-size: 0.75em;
+    position: absolute;
+    text-decoration: none;
+    top: 0.75em;
+    z-index: 9999;
+    zoom:1;
+    -moz-box-shadow: 0 0 4px #000;
+    -webkit-box-shadow: 0 0 4px #000;
+    box-shadow: 0 0 4px #000;
+    border-radius:2px;
+}
+.minicalendar table {
+    background: none;
+    border-collapse: collapse;
+    border-spacing: 0;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.minicalendar th {
+    padding: 0;
+    border: 0;
+    text-align: center;
+}
+.minicalendar thead {
+    background: rgb(0, 175, 240);
+    white-space: nowrap;
+}
+.minicalendar thead td {
+    color: #fff;
+    font-size: 2em;
+}
+.minicalendar thead th {
+    color: #fff;
+}
+.minicalendar thead th a {
+    display: block;
+    padding: 0;
+}
+
+.minicalendar a.previousMonth,
+.minicalendar a.nextMonth {
+    font-size: 1.8em;
+}
+.minicalendar a.previousMonth:link,
+.minicalendar a.previousMonth:visited,
+.minicalendar a.nextMonth:link,
+.minicalendar a.nextMonth:visited {
+    color:#fff;
+}
+.minicalendar a.previousMonth:focus,
+.minicalendar a.previousMonth:hover,
+.minicalendar a.nextMonth:focus,
+.minicalendar a.nextMonth:hover {
+    color:#000;
+    cursor:pointer;
+}
+.minicalendar a.previousMonth:active,
+.minicalendar a.nextMonth:active {
+    color: rgb(149, 60, 172);
+    cursor:pointer;
+    text-decoration:underline;
+}
+
+.minicalendar .thSelects > select {
+    margin: 0 0.5em 0 0;
+}
+.minicalendar thead tr th.thSelects select option {
+    padding: 0 0.5em !important;
+}
+
+.minicalendar tbody th {
+    background: #666;
+}
+.minicalendar tbody tr td {
+    background-color: #fff;
+}
+.minicalendar td {
+    padding: 0;
+    border: 0;
+    height: auto;
+    text-align: center;
+    position:relative;
+}
+.minicalendar td a {
+    display: block;
+    padding: 2px;
+    position: relative;
+}
+.minicalendar td a:link, .minicalendar td a:visited {
+    color: #444;
+    text-decoration: none;
+}
+.minicalendar td a:focus, .minicalendar td a:hover {
+    color: #000;
+    background: #fff url(images/bgdCalendarSelect.png) no-repeat 50% 50%;
+    text-decoration: none;
+}
+.minicalendar td a:active {
+    color: #000;
+    text-decoration: underline;
+}
+
+td.day0 {
+    color: #fff;
+}
+
+.minicalendar a.day0:link, .minicalendar a.day0:visited {
+    background: rgb(149, 60, 172);
+    color: #fff;
+}
+.minicalendar a.day0:focus, .minicalendar a.day0:hover {
+    background: #fff url(images/bgdCalendarSelect.png) no-repeat 50% 50%;
+    color: #000;
+}
+
+td.day1 {
+    color: #000;
+}
+td.day2 {
+    color: #000;
+}
+td.day3 {
+    color: #000;
+}
+td.day4 {
+    color: #000;
+}
+td.day5 {
+    color: #000;
+}
+td.day6 {
+    color: #000;
+}
+
+.minicalendar tbody tr td.day0 {
+    background: rgb(149, 60, 172);
+    color: #fff;
+}
+tr.days th {
+    padding: 0.5em;
+}
+th.day1 {
+    color: #fff;
+}
+th.day2 {
+    color: #fff;
+}
+th.day3 {
+    color: #fff;
+}
+th.day4 {
+    color: #fff;
+}
+th.day5 {
+    color: #fff;
+}
+th.day6 {
+    color: #fff;
+}
+.minicalendar .empty {
+    background: #fff url(images/bgdCalendarNoSelect.png) no-repeat 50% 50%;
+}
+
+.minicalendar td.today a:link, .minicalendar td.today a:visited {
+    background: #000;
+    color: #fff;
+}
+
+.minicalendar td.today a:focus, .minicalendar td.today a:hover {
+    background: #fff url(images/bgdCalendarSelect.png) no-repeat 50% 50%;
+    color: #000;
+}
+
+.minicalendar tbody a:link, .minicalendar tbody a:visited {
+    color: #000;
+}
+
+.minicalendar .selected:link,
+.minicalendar .selected:visited {
+    background: rgb(0, 175, 240);
+    color: #fff;
+}
+.minicalendar .selected:focus,
+.minicalendar .selected:hover {
+    background: #fff url(images/bgdCalendarSelect.png) no-repeat 50% 50%;
+    color: #000;
+}
+.minicalendar .selected:active {
+    background: #fff url(images/bgdCalendarSelect.png) no-repeat 50% 50%;
+    color: #000;
+}
+
+.selectdate {
+    display: inline-block;
+    line-height: 1em;
+    margin: 0 0.25em;
+    vertical-align: middle;
+}
