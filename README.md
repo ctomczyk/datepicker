@@ -1,6 +1,4 @@
-#Datepicker
-
-==========
+# Datepicker
 
 ## Introduction
 
