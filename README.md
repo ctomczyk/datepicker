@@ -4,7 +4,7 @@ Simple date picker written in JavaScript - accessible, fast and no dependencies 
 
 ## Usage
 
-Just add class name "datepicker" to HTML `input` element. Example: `<input class="datepicker" type="text" id="test" name="test" value=""/>`;
+Just add class name `datepicker` to HTML `input` element. Example: `<input class="datepicker" type="text" id="test" name="test" value=""/>`
 
 ## Some TODO
 
