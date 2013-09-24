@@ -1,7 +1,5 @@
 # Datepicker
 
-## Introduction
-
 Simple date picker written in JavaScript - accessible, fast and no dependencies from 3rd party libraries.
 
 ## Usage
