@@ -4,7 +4,8 @@ Simple date picker written in JavaScript - accessible, fast and no dependencies 
 
 ## Usage
 
-Just add class name `datepicker` to HTML `input` element. Example: `<input class="datepicker" type="text" id="test" name="test" value=""/>`
+* Just add class name `datepicker` to HTML `input` element. Example: `<input class="datepicker" type="text" id="test" name="test" value=""/>`
+* Translations are located in file datepicker.js where is section named `/* Config */`. There you can translate months, days, set arrows for next/previous month and many more.
 
 ## Some TODO
 
