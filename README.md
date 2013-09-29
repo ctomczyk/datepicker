@@ -6,6 +6,12 @@ Simple date picker written in JavaScript - accessible, fast and no dependencies 
 
 Just add class name `datepicker` to HTML `input` element. Example: `<input class="datepicker" type="text" id="test" name="test" value=""/>`
 
+*Note*: date picker is self initialized. This means that the code should be run in one of the options:
+
+- before closing `body` HTML tag
+- when DOMContentLoaded event is called which means that the document has been completely loaded and parsed, without waiting for stylesheets, images, and subframes to finish loading
+- when window.onload event is called which means all resources and its dependent resources have finished loading
+
 ## Configuration
 
 Configuration is located in file `datepicker.js` where is section named `/* Config */`. There you have:
