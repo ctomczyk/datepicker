@@ -33,7 +33,8 @@
         months : ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 
         yearsFrom : 2020,
-        dateSeparator : '-'
+        dateSeparator : '-',
+        forceHTML5 : false
     };
 
     /* End Config */
@@ -194,24 +195,6 @@
         return fn;
     }());
 
-    is_input_type_date_supported = (function () {
-        var elm = document.createElement('input'),
-            supported,
-            m;
-
-        elm.setAttribute('type', 'date');
-        elm.setAttribute('value', 'test');
-
-        if (elm.type !== 'date' || elm.value === 'test') {
-            supported = false;
-        }
-        supported = true;
-        m = function () {
-            return supported;
-        };
-        return m;
-    }());
-
     has_class = (function () {
         var m;
 
@@ -337,38 +320,52 @@
             }
             var elms = get_elements_by_class_name(datepicker_class),
                 l = elms.length,
+                body = document.body || document.getElementsByTagName('body')[0],
                 // Icon for click and hide calendar
-                open_close_link,
-                open_close_icon,
+                link_icon,
+                link_icon_clone,
+                img_icon,
                 i,
                 elms_height,
-                wrapper;
+                wrapper,
+                elm = document.createElement('input');
+
+            // Check, if browser support HTML <input> type "date" + if we really want to use it (forceHTML5 must be set to "true")
+            elm.setAttribute('type', 'date');
+            if (elm.type === 'date' && config.forceHTML5) {
+                for (i = 0; i < l; i += 1) {
+                    elms[i].setAttribute('type', 'date');
+                }
+                return;
+            }
+
+            // Add class hideDatepickers to <body> for preventing reflow. We'll show all icons after they will be added to DOM
+            add_class(body, 'hideDatepickers');
 
             // Create calendar icon
-            open_close_icon = document.createElement('img');
-            open_close_icon.src = 'images/icoCalendar.png';
-            open_close_icon.width = '16';
-            open_close_icon.height = '16';
-            open_close_icon.alt = 'calendar';
+            img_icon = document.createElement('img');
+            img_icon.src = 'images/icoCalendar.png';
+            img_icon.width = '16';
+            img_icon.height = '16';
+            img_icon.alt = 'calendar';
 
             for (i = 0; i < l; i += 1) {
-                open_close_link = document.createElement('a');
-                open_close_link.href = '#' + elms[i].id;
-                open_close_link.setAttribute('data-inputid', elms[i].id);
-                open_close_link.className = 'nosmooth selectdate';
-                open_close_link.role = 'button';
-                open_close_link.onclick = date_picker.showhide;
-                open_close_link.title = 'Select date from date picker';
-
-                open_close_link.appendChild(open_close_icon.cloneNode(false));
+                link_icon = document.createElement('a');
+                link_icon.href = '#' + elms[i].id;
+                link_icon.setAttribute('data-inputid', elms[i].id);
+                link_icon.className = 'nosmooth selectdate';
+                link_icon.role = 'button';
+                link_icon.title = 'Select date from date picker';
+                link_icon.onclick = date_picker.showhide;
+                link_icon.appendChild(img_icon.cloneNode(false));
 
                 // Insert calendar link right after specified element elms[i]
-                elms[i].parentNode.insertBefore(open_close_link, (elms[i].nextSibling || null));
+                elms[i].parentNode.insertBefore(link_icon, (elms[i].nextSibling || null));
 
-                // Get height of elms[i] for vertical centering
-                elms_height = parseInt((elms[i].clientHeight - open_close_link.clientHeight) / 2, 10);
-                open_close_link.style.position = 'relative';
-                open_close_link.style.top = elms_height + 'px';
+                // Get height of elms[i] for vertical centering; 16 is a height of calendar image icon
+                elms_height = parseInt((elms[i].clientHeight - 16) / 2, 10);
+                link_icon.style.position = 'relative';
+                link_icon.style.top = elms_height + 'px';
             }
 
             // Create wrapper for calendar
@@ -378,12 +375,15 @@
             wrapper.style.display = 'none';
             wrapper.tabIndex = '-1';
             wrapper.setAttribute('role', 'dialog');
-            document.getElementsByTagName('body')[0].appendChild(wrapper);
+            body.appendChild(wrapper);
 
             // Store reference to wrapper
             date_picker.wrapper = wrapper;
 
-            elms = null;
+            // Show all date picker icons by removing class name from <body>; 1 reflow
+            body.className = body.className.replace(/(^\s*|\s+)hideDatepickers(\s*$|(\s))/, '');
+            // Remove unneeded references
+            elm = null;
         },
 
         showhide : function (e) {

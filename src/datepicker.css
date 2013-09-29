@@ -1,3 +1,6 @@
+body.hideDatepickers .selectdate{
+    display: none;
+}
 /* Datepicker */
 .minicalendar {
     background-color: rgb(0, 175, 240);
