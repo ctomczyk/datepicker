@@ -12,7 +12,7 @@ Configuration is located in file `datepicker.js` where is section named `/* Conf
 - _dateFormat_ - set your preffered date format 'dd-mm-yyyy' or 'yyyy-mm-dd'
 - _previousMonth_, _nextMonth_ - specify symbol for 'previous' and 'next' month button
 - _days_, _month_ - arrays where are specified names of days and month in english by default
-- _yearsFrom_ - from which year you want to start count in your `select` year HTML element
+- _yearsFrom_ - from which year you want to start count in your `select` year HTML element; default is 2020
 - _dateSeparator_ - used when date is passed to HTML `input` element; default is '-'
 - _forceHTML5_ - set to `true` if you want to really use HTML5 date picker when available; by default is `false`
 
