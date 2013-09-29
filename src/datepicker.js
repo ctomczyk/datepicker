@@ -15,7 +15,8 @@
         add_class,
         is_input_type_date_supported,
         add_event,
-        remove_event;
+        remove_event,
+        get_inner_text;
 
     /* Config */
 
@@ -160,20 +161,38 @@
         return [scrOfX, scrOfY];
     }
 
-    function get_inner_text(node) {
-        if (node.nodeType === 3) {
-            return node.data;
-        }
+    get_inner_text = (function () {
 
-        var txt = '';
+        var fn;
 
-        node = node.firstChild;
-        while (node) {
-            txt += get_inner_text(node);
-            node = node.nextSibling;
+        if (is_host_method(document, 'createTreeWalker')) {
+            fn = function (root) {
+                // 4 = NodeFilter.SHOW_TEXT
+                var w = document.createTreeWalker(root, 4, null, false),
+                    result = '';
+                while (w.nextNode()) {
+                    result += w.currentNode.data;
+                }
+                return result;
+            };
+        } else {
+            fn = function (node) {
+                if (node.nodeType === 3) {
+                    return node.data;
+                }
+
+                var txt = '';
+
+                node = node.firstChild;
+                while (node) {
+                    txt += fn(node);
+                    node = node.nextSibling;
+                }
+                return txt.replace(/\s+/g, ' ');
+            };
         }
-        return txt.replace(/\s+/g, ' ');
-    }
+        return fn;
+    }());
 
     is_input_type_date_supported = (function () {
         var elm = document.createElement('input'),
