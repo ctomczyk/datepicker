@@ -23,10 +23,6 @@
     config = {
         dateFormat : 'dd-mm-yyyy', // or yyyy-mm-dd
 
-        currentDay : '',
-        currentMonth : '',
-        currentYear : '',
-
         previousMonth : '«',
         nextMonth : '»',
         days : ['mo', 'tu', 'we', 'th', 'fr', 'sa', 'su'],
@@ -302,6 +298,10 @@
 
         /* Basic properties used in date picker */
 
+        currentDay : '',
+        currentMonth : '',
+        currentYear : '',
+
         selectedDay : '',
         selectedMonth : '',
         selectedYear : '',
@@ -420,9 +420,9 @@
 
             // Read current date
             d = get_current_date();
-            config.currentDay = parseInt(d[0], 10);
-            config.currentMonth = parseInt(d[1], 10) - 1;
-            config.currentYear = d[2];
+            date_picker.currentDay = parseInt(d[0], 10);
+            date_picker.currentMonth = parseInt(d[1], 10) - 1;
+            date_picker.currentYear = d[2];
 
             // Read date from <input>
             date_picker.read(destInput);
@@ -647,7 +647,7 @@
                 a.appendChild(document.createTextNode(day));
                 a.onclick = date_picker.no_action;
 
-                if (day === config.currentDay && config.currentMonth === date_picker.selectedMonth && config.currentYear === date_picker.selectedYear) {
+                if (day === date_picker.currentDay && date_picker.currentMonth === date_picker.selectedMonth && date_picker.currentYear === date_picker.selectedYear) {
                     add_class(a, 'day today');
                     a.title = 'The selected day is today';
                     a.setAttribute('aria-selected', 'false');
