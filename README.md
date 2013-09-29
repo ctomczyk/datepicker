@@ -9,8 +9,8 @@ Just add class name `datepicker` to HTML `input` element. Example: `<input class
 **Note**: date picker is self initialized. This means that the code should be run in at least one of specified options:
 
 - before closing `body` HTML tag
-- when DOMContentLoaded event is called which means that the document has been completely loaded and parsed, without waiting for stylesheets, images, and subframes to finish loading
-- when window.onload event is called which means all resources and its dependent resources have finished loading
+- when `DOMContentLoaded` event is called which means that the document has been completely loaded and parsed, without waiting for stylesheets, images, and subframes to finish loading
+- when `window.onload` event is called which means all resources and its dependent resources have finished loading
 
 ## Configuration
 
