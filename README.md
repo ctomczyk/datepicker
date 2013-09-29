@@ -4,11 +4,11 @@ Simple date picker written in JavaScript - accessible, fast and no dependencies 
 
 ## Usage
 
-* Just add class name `datepicker` to HTML `input` element. Example: `<input class="datepicker" type="text" id="test" name="test" value=""/>`
+Just add class name `datepicker` to HTML `input` element. Example: `<input class="datepicker" type="text" id="test" name="test" value=""/>`
 
 ## Configuration
 
-Configuration are located in file `datepicker.js` where is section named `/* Config */`. There you have:
+Configuration is located in file `datepicker.js` where is section named `/* Config */`. There you have:
 - _dateFormat_ - set your preffered date format 'dd-mm-yyyy' or 'yyyy-mm-dd'
 - _currentDay_, _currentMonth_, _currentYear_ - specify current date by yourself, if you want
 - _previousMonth_, _nextMonth_ - specify symbol for 'previous' and 'next' month button
