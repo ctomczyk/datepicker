@@ -10,7 +10,6 @@ Just add class name `datepicker` to HTML `input` element. Example: `<input class
 
 Configuration is located in file `datepicker.js` where is section named `/* Config */`. There you have:
 - _dateFormat_ - set your preffered date format 'dd-mm-yyyy' or 'yyyy-mm-dd'
-- _currentDay_, _currentMonth_, _currentYear_ - specify current date by yourself, if you want
 - _previousMonth_, _nextMonth_ - specify symbol for 'previous' and 'next' month button
 - _days_, _month_ - arrays where are specified names of days and month in english by default
 - _yearsFrom_ - from which year you want to start count in your `select` year HTML element
