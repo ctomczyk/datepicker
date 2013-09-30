@@ -1,6 +1,6 @@
 # Datepicker
 
-Simple date picker written in JavaScript - accessible, fast and no dependencies from 3rd party libraries. Tested on: IE6-10, Firefox 24, Chrome 29.0.1547.76 m / all on Windows 7.
+Simple date picker written in JavaScript - accessible, fast and no dependencies from 3rd party libraries. Tested on: IE6-10, Firefox 24, Chrome 29.0.1547.76 m / all on Windows OS.
 
 ## Usage
 
