@@ -169,12 +169,12 @@ th.day6 {
     background: #fff url(images/bgdCalendarNoSelect.png) no-repeat 50% 50%;
 }
 
-.minicalendar td.today a:link, .minicalendar td.today a:visited {
+.minicalendar td a.today:link, .minicalendar td a.today:visited {
     background: #000;
     color: #fff;
 }
 
-.minicalendar td.today a:focus, .minicalendar td.today a:hover {
+.minicalendar td a.today:focus, .minicalendar td a.today:hover {
     background: #fff url(images/bgdCalendarSelect.png) no-repeat 50% 50%;
     color: #000;
 }
