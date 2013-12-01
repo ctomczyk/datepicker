@@ -10,7 +10,6 @@
     var date_picker,
         config,
         re = new RegExp('^(function|object)$', 'i'),
-        get_elements_by_class_name,
         has_class,
         add_class,
         is_input_type_date_supported,
@@ -230,39 +229,6 @@
         return m;
     }());
 
-    get_elements_by_class_name = (function () {
-
-        var m;
-
-        if (is_host_method(document, 'getElementsByClassName')) {
-            m = function (class_name, context) {
-                return (context || global.document).getElementsByClassName(class_name || '');
-            };
-        } else {
-            m = function (class_name, context) {
-
-                var elms = (context || global.document).getElementsByTagName('*'),
-                    l = elms.length,
-                    result = [],
-                    i;
-
-                if (!class_name) {
-                    return result;
-                }
-
-                for (i = 0; i < l; i += 1) {
-                    if (has_class(elms[i], class_name)) {
-                        result.push(elms[i]);
-                    }
-                }
-                return result;
-            };
-        }
-
-        return m;
-
-    }());
-
     if (is_host_method(global, 'addEventListener')) {
 
         add_event = function (target, type, listener) {
@@ -318,8 +284,8 @@
             if (!datepicker_class) {
                 datepicker_class = 'datepicker';
             }
-            var elms = get_elements_by_class_name(datepicker_class),
-                l = elms.length,
+            var elms = [],
+                l,
                 body = document.body || document.getElementsByTagName('body')[0],
                 // Icon for click and hide calendar
                 link_icon,
@@ -328,7 +294,25 @@
                 i,
                 elms_height,
                 wrapper,
-                elm = document.createElement('input');
+                elm = document.createElement('input'),
+                j,
+                elms_all,
+                k;
+
+            // Get all needed elements
+            if (is_host_method(global.document, 'getElementsByClassName')) {
+                elms =  global.document.getElementsByClassName(datepicker_class);
+            } else {
+                elms_all = global.document.getElementsByTagName('*');
+                k = elms_all.length;
+                for (j = 0; j < k; j += 1) {
+                    if (has_class(elms_all[j], datepicker_class)) {
+                        elms.push(elms_all[j]);
+                    }
+                }
+            }
+
+            l = elms.length;
 
             // Check, if browser support HTML <input> type "date" + if we really want to use it (forceHTML5 must be set to "true")
             elm.setAttribute('type', 'date');
@@ -353,7 +337,7 @@
                 link_icon = document.createElement('a');
                 link_icon.href = '#' + elms[i].id;
                 link_icon.setAttribute('data-inputid', elms[i].id);
-                link_icon.className = 'nosmooth selectdate';
+                link_icon.className = 'selectdate';
                 link_icon.role = 'button';
                 link_icon.title = 'Select date from date picker';
                 link_icon.onclick = date_picker.showhide;
