@@ -15,7 +15,8 @@
         is_input_type_date_supported,
         add_event,
         remove_event,
-        get_inner_text;
+        get_inner_text,
+        get_element_position;
 
     /* Config */
 
@@ -84,20 +85,20 @@
         ];
     }
 
-    function get_element_position(el) {
-        var posleft = 0,
-            postop = 0;
-
-        if (el.offsetParent) {
-            posleft = el.offsetLeft;
-            postop = el.offsetTop;
-            while (el === el.offsetParent) {
-                posleft += el.offsetLeft;
-                postop += el.offsetTop;
-            }
+    get_element_position = (function () {
+        var fn;
+        if (is_host_method(document.body, 'getBoundingClientRect')) {
+            fn = function (el) {
+                var rect = el.getBoundingClientRect();
+                return [rect.top, rect.left];
+            };
+        } else {
+            fn = function (el) {
+                return [el.offsetTop, el.offsetTop];
+            };
         }
-        return [postop, posleft];
-    }
+        return fn;
+    }());
 
     function get_page_size() {
         var xScroll, yScroll, pageWidth, pageHeight, windowWidth, windowHeight;
